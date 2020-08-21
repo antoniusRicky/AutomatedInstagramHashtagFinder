@@ -59,7 +59,6 @@ def getRecentlySearchedHashtags(params):
 
     return makeApiCall(url, endpointParams, params['debug'])  # make the api call
 
-
 try:  # try and get param from command line
     hashtag = sys.argv[1]  # hashtag to get info on
 except:  # default to coding hashtag
@@ -85,14 +84,19 @@ print ("\n\n\n\t\t\t >>>>>>>>>>>>>>>>>>>> HASHTAG TOP MEDIA <<<<<<<<<<<<<<<<<<<<
 params['type'] = 'top_media'  # set call to get top media for hashtag
 hashtagTopMediaResponse = getHashtagMedia(params)  # hit the api for some data!
 
+
+file1 = open("Testing.txt", "w")
 for post in hashtagTopMediaResponse['json_data']['data']:  # loop over posts
     print ("\n\n---------- POST ----------\n")  # post heading
     print ("Link to post:")  # label
     print (post['permalink'])  # link to post
     print ("\nPost caption:")  # label
     print (post['caption'])  # post caption
+    file1.writelines(post['caption'].encode('unicode-escape').decode('ASCII'))
     print ("\nMedia type:")  # label
     print (post['media_type'])  # type of media
+
+file1.close()
 
 print ("\n\n\n\t\t\t >>>>>>>>>>>>>>>>>>>> HASHTAG RECENT MEDIA <<<<<<<<<<<<<<<<<<<<\n")  # section heading
 params['type'] = 'recent_media'  # set call to get recent media for hashtag
