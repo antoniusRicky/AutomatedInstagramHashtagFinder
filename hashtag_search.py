@@ -92,7 +92,10 @@ for post in hashtagTopMediaResponse['json_data']['data']:  # loop over posts
     print (post['permalink'])  # link to post
     print ("\nPost caption:")  # label
     print (post['caption'])  # post caption
-    file1.writelines(post['caption'].encode('unicode-escape').decode('ASCII'))
+    a = post['caption'].encode('unicode-escape').decode('ASCII')
+    b = " "
+    c = a+b
+    file1.writelines(c)
     print ("\nMedia type:")  # label
     print (post['media_type'])  # type of media
 
