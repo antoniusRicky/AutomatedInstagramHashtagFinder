@@ -8,7 +8,7 @@ import urllib.request
 
 def is_user_online(host='http://google.com'):
     try:
-        urllib.request.urlopen(host)  # Python 3.x
+        urllib.request.urlopen(host)
         return True
     except:
         return False
@@ -53,7 +53,7 @@ def show_final_recommendation():
 def button_clicked():
     if is_user_online():
         if is_valid_input():
-            # get_top_posts(ent_topic.get())
+            get_top_posts(ent_topic.get())  # comment this line to turn on/off the search feature; for debug/test
             show_final_recommendation()
         else:
             show_error_message()
